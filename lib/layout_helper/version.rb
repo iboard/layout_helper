@@ -1,5 +1,5 @@
 module LayoutHelper
   
-  VERSION='0.0.1.008'  
+  VERSION='0.0.1'  
 
 end
