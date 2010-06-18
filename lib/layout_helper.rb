@@ -16,23 +16,25 @@ module LayoutHelper
     def input_field(f,obj,field,&block) 
       rc = "<div class='input_field'>".html_safe
       if f
-        rc += f.label(field.to_sym)
+        rc << f.label(field.to_sym)
       else
-        rc += label_tag(field.to_sym)
+        rc << label_tag(field.to_sym)
       end
-      rc += yield
-      rc += NBSP + display_errors_for( obj, field.to_sym )
-      rc += "</div>".html_safe
+      rc << yield
+      rc << NBSP + display_errors_for( obj, field.to_sym )
+      rc << "</div>".html_safe
       rc
     end
     
     def page_menu(items)
       rc = "<div id='page_menu'><ul>".html_safe
       items.each do |item|
-        rc += "<li>".html_safe + link_to( item[:label], item[:url] ) + "</li>".html_safe
+        rc << "<li>".html_safe + link_to( item[:label], item[:url] ) + "</li>".html_safe
       end
-      rc += "</ul></div>".html_safe
-      rc + "<br clear='left' />".html_safe
+      rc << "</ul>"
+      rc << "<br clear='left' />".html_safe
+      rc << "</div>".html_safe
+      rc
     end
     
 end
