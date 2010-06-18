@@ -15,7 +15,11 @@ module LayoutHelper
     
     def input_field(f,obj,field,&block) 
       rc = "<div class='input_field'>".html_safe
-      rc += f.label(field.to_sym)
+      if f
+        rc += f.label(field.to_sym)
+      else
+        rc += label_tag(:user,field.to_sym)
+      end
       rc += yield
       rc += NBSP + display_errors_for( obj, field.to_sym )
       rc += "</div>".html_safe
