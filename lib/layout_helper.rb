@@ -31,7 +31,7 @@ module LayoutHelper
       items.each do |item|
         rc << "<li>".html_safe + 
           link_to_unless_current( item[:label], item[:url] ) {
-            content_tag :span, item[:label] 
+            content_tag :span, :class => 'current_page_link', item[:label] 
           } + 
           "</li>".html_safe
       end
