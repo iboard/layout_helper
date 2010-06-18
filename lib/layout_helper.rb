@@ -26,6 +26,15 @@ module LayoutHelper
       rc
     end
     
+    def page_menu(items)
+      rc = "<div id='page_menu'><ul>"
+      items.each do |item|
+        rc += "<li>#{link_to( item[:label], item[:url] )}</li>"
+      end
+      rc += "</ul></div>"
+      rc
+    end
+    
 end
 
 module StringExtensions
