@@ -18,7 +18,7 @@ module LayoutHelper
       if f
         rc += f.label(field.to_sym)
       else
-        rc += label_tag(:user,field.to_sym)
+        rc += label_tag(field.to_sym)
       end
       rc += yield
       rc += NBSP + display_errors_for( obj, field.to_sym )
