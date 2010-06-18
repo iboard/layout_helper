@@ -32,7 +32,7 @@ module LayoutHelper
         rc += "<li>".html_safe + link_to( item[:label], item[:url] ) + "</li>".html_safe
       end
       rc += "</ul></div>".html_safe
-      rc
+      rc + "<br clear='left' />".html_safe
     end
     
 end
