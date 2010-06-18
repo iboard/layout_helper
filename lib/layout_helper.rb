@@ -27,11 +27,11 @@ module LayoutHelper
     end
     
     def page_menu(items)
-      rc = "<div id='page_menu'><ul>"
+      rc = "<div id='page_menu'><ul>".html_safe
       items.each do |item|
-        rc += "<li>#{link_to( item[:label], item[:url] )}</li>"
+        rc += "<li>".html_safe + "#{link_to( item[:label], item[:url] )}" + "</li>".html_safe
       end
-      rc += "</ul></div>"
+      rc += "</ul></div>".html_safe
       rc
     end
     
