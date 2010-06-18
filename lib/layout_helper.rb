@@ -31,7 +31,7 @@ module LayoutHelper
       items.each do |item|
         rc << "<li>".html_safe + link_to( item[:label], item[:url] ) + "</li>".html_safe
       end
-      rc << "</ul>"
+      rc << "</ul>".html_safe
       rc << "<br clear='left' />".html_safe
       rc << "</div>".html_safe
       rc
