@@ -31,7 +31,9 @@ module LayoutHelper
       items.each do |item|
         rc << "<li>".html_safe + 
           link_to_unless_current( item[:label], item[:url] ) {
-            content_tag :span, :class => 'current_page_link', item[:label] 
+            content_tag( :span, :class => 'current_page_link' ) {
+              item[:label] 
+            }
           } + 
           "</li>".html_safe
       end
@@ -44,13 +46,16 @@ module LayoutHelper
 end
 
 module StringExtensions
+  
   RAND_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789"
+  
   def random_string(len)
-      rand_max = RAND_CHARS.size
+      rand_max = StringExtensions::RAND_CHARS.size
       ret = "" 
-      len.times{ ret << RAND_CHARS[rand(rand_max)] }
+      len.times{ ret << StringExtensions::RAND_CHARS[rand(rand_max)] }
       ret 
   end
+  
 end
 
 class String
