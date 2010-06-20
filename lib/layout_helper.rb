@@ -50,10 +50,10 @@ module StringExtensions
   RAND_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789"
   
   def random_string(len)
-      rand_max = StringExtensions::RAND_CHARS.size
-      ret = "" 
-      len.times{ ret << StringExtensions::RAND_CHARS[rand(rand_max)] }
-      ret 
+    rand_max = StringExtensions::RAND_CHARS.size
+    ret = "" 
+    len.times{ ret << StringExtensions::RAND_CHARS[rand(rand_max)] }
+    ret 
   end
   
 end
