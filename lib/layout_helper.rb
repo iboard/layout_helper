@@ -1,5 +1,10 @@
 module LayoutHelper
     
+    NBSP='&nbsp;'.html_safe
+    
+    #
+    # Usage <%= title 'Text to output and set as html-title -%>
+    #
     def title(t,display=true)
       content_for :title do
         t
@@ -7,12 +12,21 @@ module LayoutHelper
       return t if display
     end
     
+    #
+    # object is a form-helper object
+    # field is an active-record filed with errors
+    #
     def display_errors_for(obj,field)
       content_tag :div, :class => 'error_for_field' do
         obj.errors[field.to_sym].map { |e| e.to_s }.join(", ")
       end
     end
     
+    #
+    # renders a form field with div-tags, label and the field given
+    # in block. If the field contains erros, these errors are displayed
+    # behind the input-field.
+    #
     def input_field(f,obj,field,&block) 
       rc = "<div class='input_field'>".html_safe
       if f
@@ -21,11 +35,19 @@ module LayoutHelper
         rc << label_tag(field.to_sym)
       end
       rc << yield
-      rc << NBSP + display_errors_for( obj, field.to_sym )
+      rc << LayoutHelper::NBSP + display_errors_for( obj, field.to_sym )
       rc << "</div>".html_safe
       rc
     end
     
+    #
+    # <%= page_menu [ 
+    #              { :label => 'Home',  :url => root_path},
+    #              { :label => 'About', :url => "/about"}
+    #            ] -%>
+    #
+    # Define #page_menu and .current_page_link in your stylesheet
+    #
     def page_menu(items)
       rc = "<div id='page_menu'><ul>".html_safe
       items.each do |item|
@@ -45,10 +67,15 @@ module LayoutHelper
     
 end
 
+
 module StringExtensions
-  
+
+  # Characters which may be used in random strings  
   RAND_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789"
   
+  #
+  # random string of 'len' characters length
+  #
   def random_string(len)
     rand_max = StringExtensions::RAND_CHARS.size
     ret = "" 
