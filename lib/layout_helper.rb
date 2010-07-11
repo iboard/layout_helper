@@ -73,7 +73,7 @@ module LayoutHelper
         t(APPLICATION_NAME)
       } + 
       content_tag( :div, :id => 'session_box') {
-        if current_user && logged_in?
+        if ApplicationController::current_user && ApplicationController::logged_in?
           t(:you_are_logged_in_as, :username => current_user.username) + ": " + NBSP +
           link_to( t(:logout).gsub(/ /,"&nbsp;").html_safe, logout_path)
         else
