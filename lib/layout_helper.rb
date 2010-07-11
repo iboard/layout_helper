@@ -65,6 +65,23 @@ module LayoutHelper
       rc
     end
     
+    #
+    #  Display Session-info or Login-Link
+    #
+    def session_box
+      content_tag(:div , :id => 'application_title' ) {
+        t(APPLICATION_NAME)
+      } + 
+      content_tag( :div, :id => 'session_box') {
+        if current_user && logged_in?
+          t(:you_are_logged_in_as, :username => current_user.username) + ": " + NBSP +
+          link_to( t(:logout).gsub(/ /,"&nbsp;").html_safe, logout_path)
+        else
+          link_to( t(:login).gsub(/ /,"&nbsp;").html_safe, login_path)
+        end
+      }
+    end
+    
 end
 
 
