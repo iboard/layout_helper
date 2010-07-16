@@ -2,8 +2,8 @@ module LayoutHelper
     
     NBSP='&nbsp;'.html_safe
     BR='<br/>'.html_safe
-    OK='✔'
-    NOTOK='(NOTOK)'
+    OK='[OK]'
+    NOTOK='[NOTOK]'
     COPYRIGHT='&copy;'.html_safe
     
     #
