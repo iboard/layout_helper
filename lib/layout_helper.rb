@@ -1,6 +1,10 @@
 module LayoutHelper
     
     NBSP='&nbsp;'.html_safe
+    BR='<br/>'.html_safe
+    OK='✔'
+    NOTOK='(NOTOK)'
+    COPYRIGHT='&copy;'.html_safe
     
     #
     # Usage <%= title 'Text to output and set as html-title -%>
