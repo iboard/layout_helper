@@ -53,7 +53,8 @@ module LayoutHelper
     # Define #page_menu and .current_page_link in your stylesheet
     #
     def page_menu(items, options={})
-      options.merge! { :id => 'page_menu', :item_class => 'current_page_link', :clear => 'left' }
+      defaults = { :id => 'page_menu', :item_class => 'current_page_link', :clear => 'left' }
+      options.merge! defaults
       rc = "<div id='#{options[:id]}'><ul>".html_safe
       items.each do |item|
         rc << "<li>".html_safe + 
