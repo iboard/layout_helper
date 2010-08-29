@@ -55,7 +55,10 @@ module LayoutHelper
     def page_menu(items, options={})
       defaults = { :id => 'page_menu', :item_class => 'current_page_link', :clear => 'left' }
       defaults.merge! options
-      rc = "<div id='#{defaults[:id]}'><ul>".html_safe
+      rc = (
+            "<div id='#{defaults[:id]}'>"+
+            "<ul>"
+      ).html_safe
       items.each do |item|
         rc << "<li>".html_safe + 
           link_to_unless_current( item[:label], item[:url] ) {
@@ -74,14 +77,14 @@ module LayoutHelper
     #
     #  Display Session-info or Login-Link
     #
-    def session_box
+    def session_box(user_column='username')
       content_tag(:div , :id => 'application_title' ) {
         t(APPLICATION_NAME)
       } + 
       content_tag( :div, :id => 'session_box') {
         if current_user && logged_in?
           t(:you_are_logged_in_as, 
-            :username => current_user.username) + ": " + NBSP +
+            :username => current_user.send(user_column)) + ": " + NBSP +
           link_to( t(:logout).gsub(/ /,"&nbsp;").html_safe, logout_path)
         else
           link_to( t(:login).gsub(/ /,"&nbsp;").html_safe, login_path)
