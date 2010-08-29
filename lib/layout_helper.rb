@@ -54,19 +54,19 @@ module LayoutHelper
     #
     def page_menu(items, options={})
       defaults = { :id => 'page_menu', :item_class => 'current_page_link', :clear => 'left' }
-      options.merge! defaults
-      rc = "<div id='#{options[:id]}'><ul>".html_safe
+      defaults.merge! options
+      rc = "<div id='#{defaults[:id]}'><ul>".html_safe
       items.each do |item|
         rc << "<li>".html_safe + 
           link_to_unless_current( item[:label], item[:url] ) {
-            content_tag( :span, :class => "#{options[:item_class]}" ) {
+            content_tag( :span, :class => "#{defaults[:item_class]}" ) {
               item[:label] 
             }
           } + 
           "</li>".html_safe
       end
       rc << "</ul>".html_safe
-      rc << "<br clear='#{options[:clear]}' />".html_safe
+      rc << "<br clear='#{defaults[:clear]}' />".html_safe
       rc << "</div>".html_safe
       rc
     end
