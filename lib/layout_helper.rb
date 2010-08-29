@@ -52,19 +52,20 @@ module LayoutHelper
     #
     # Define #page_menu and .current_page_link in your stylesheet
     #
-    def page_menu(items)
-      rc = "<div id='page_menu'><ul>".html_safe
+    def page_menu(items, option={})
+      options.merge! { :id=>'page_menu', :item_class=>'current_page_link', :clear => 'left' }
+      rc = "<div id='#{options[:id]}'><ul>".html_safe
       items.each do |item|
         rc << "<li>".html_safe + 
           link_to_unless_current( item[:label], item[:url] ) {
-            content_tag( :span, :class => 'current_page_link' ) {
+            content_tag( :span, :class => "#{options[:item_class]}" ) {
               item[:label] 
             }
           } + 
           "</li>".html_safe
       end
       rc << "</ul>".html_safe
-      rc << "<br clear='left' />".html_safe
+      rc << "<br clear='#{options[:clear]}' />".html_safe
       rc << "</div>".html_safe
       rc
     end
