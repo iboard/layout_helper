@@ -92,6 +92,20 @@ module LayoutHelper
       }
     end
     
+    #
+    # Include static HTML-Pages
+    #
+    def html_include(filename)
+      f = File::open(filename,'r')
+      if f
+        html = f.read
+        f.close
+      else
+        html = t(:file_not_found, :filename => filename)
+      end
+      html
+    end
+    
 end
 
 
