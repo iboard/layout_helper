@@ -77,14 +77,16 @@ module LayoutHelper
     #
     #  Display Session-info or Login-Link
     #
-    def session_box(user_column='username')
+    def session_box(user_column='username', user_settings_path='/user')
       content_tag(:div , :id => 'application_title' ) {
         t(APPLICATION_NAME)
       } + 
       content_tag( :div, :id => 'session_box') {
         if current_user && logged_in?
-          t(:you_are_logged_in_as, 
-            :username => current_user.send(user_column)) + ": " + NBSP +
+          link_to(t(:you_are_logged_in_as, 
+            :username => current_user.send(user_column)),
+            user_settings_path
+          ) + ": " + NBSP +
           link_to( t(:logout).gsub(/ /,"&nbsp;").html_safe, logout_path)
         else
           link_to( t(:login).gsub(/ /,"&nbsp;").html_safe, login_path)
