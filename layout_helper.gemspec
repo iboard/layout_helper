@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   # s.add_dependency "another", "~> 1.2"
 
   # If you need to check in files that aren't .rb files, add them here
-  s.files        = Dir["README", "LICENSE", "lib/layout_helper.rb"]
+  s.files        = Dir["README.md", "LICENSE", "lib/layout_helper.rb"]
   s.require_path = 'lib'
 
   # If you need an executable, add it here
